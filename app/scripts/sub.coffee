@@ -1,2 +1,3 @@
-require ['scripts/super-sub'], ->
-  console.log 'this is sub'
+console.log 'this is sub'
+
+console.log 'just test'
