@@ -11,6 +11,7 @@ jeet = require 'jeet'
 autoprefixer = require 'autoprefixer-stylus'
 minifyCss = require 'gulp-minify-css'
 
+webpack = require 'gulp-webpack'
 coffee = require 'gulp-coffee'
 cjsx = require 'gulp-cjsx'
 amdOptimize = require 'amd-optimize'
@@ -21,6 +22,23 @@ prettify = require 'gulp-jsbeautifier'
 sourcemaps = require 'gulp-sourcemaps'
 
 browserSync = require('browser-sync').create()
+
+gulp.task 'webpack', ->
+  gulp.src('./app/main.coffee')
+  .pipe(webpack({
+      output: {filename: 'bundle.js'}
+      resolveLoader:
+        modulesDirectories: ['node_modules']
+      resolve:
+        extensions: ['', '.js', '.cjsx', '.coffee']
+      module:
+        loaders: [
+          test: /\.cjsx$/, loaders: ['coffee', 'cjsx']
+        ,
+          test: /\.coffee$/, loader: 'coffee'
+        ]
+    }))
+  .pipe(gulp.dest('./build/assets'))
 
 gulp.task 'style-bundle', ->
   gulp.src('./app/**/*.styl')
@@ -44,7 +62,7 @@ gulp.task 'script-bundle', ->
   .pipe(gulp.dest('./build/assets'))
 
 gulp.task 'react-bundle', ->
-  gulp.src('./app/**/*.cjsx')
+  gulp.src(['./app/**/*.cjsx', './server/routers/**/*.cjsx'])
     .pipe(sourcemaps.init())
     .pipe(cjsx({bare: true}))
     .pipe(sourcemaps.write())
@@ -55,12 +73,12 @@ gulp.task 'browser-sync', ['nodemon'], ->
   browserSync.init null,
     port: 2015
     proxy: "http://localhost:7000"
-    files: ["./build/**/*.*", "./app/**/*.jade"]
+    files: ["./build/**/*.*", "./server/**/*.jade"]
     open: false
 
   gulp.watch "./app/**/*.styl", ['style-bundle']
   gulp.watch "./app/**/*.coffee", ['script-bundle']
-  gulp.watch "./app/**/*.cjsx", ['react-bundle']
+  gulp.watch ["./app/**/*.cjsx", "./server/routers/**/*.cjsx"], ['react-bundle']
 
 gulp.task 'nodemon', (callback) ->
   started = false

@@ -37,5 +37,3 @@ cars = [
 ,
   name: "Car 3"
 ]
-
-React.render(<CarList items={cars}/>, document.body)
