@@ -23,11 +23,8 @@ Car = React.createClass
 
 CarList = React.createClass
   render: ->
-    cars = @props.items.map (item) ->
-      <Car name={item.name} />
-
     return (
-      <ul>{cars}</ul>
+      <h1>cars</h1>
     );
 
 cars = [

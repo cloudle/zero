@@ -7,6 +7,9 @@ routes = (
     <Route handler={App} path="/">
         <DefaultRoute handler={Home} />
         <Route name="about" handler={About} />
+        <Route name="car" handler={Car}>
+            <Route name="recent-cars" handler={CarList} />
+        </Route>
         <Route name="users" handler={Users} >
             <Route name="recent-users" handler={RecentUsers} />
             <Route name="user" handler={User} />

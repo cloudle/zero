@@ -1,3 +1,7 @@
+Link = ReactRouter.Link
+
 Home = React.createClass
     render: ->
-        <h1>this is Home</h1>
+        <div>
+            <h1>this is Home</h1>
+        </div>

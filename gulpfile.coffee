@@ -3,6 +3,7 @@ gutil = require 'gulp-util'
 order = require 'gulp-order'
 concat = require 'gulp-concat'
 rename = require 'gulp-rename'
+addsrc = require 'gulp-add-src'
 merge = require 'merge-stream'
 
 stylus = require 'gulp-stylus'
@@ -62,12 +63,16 @@ gulp.task 'script-bundle', ->
   .pipe(gulp.dest('./build/assets'))
 
 gulp.task 'react-bundle', ->
-  gulp.src(['./app/components/*.cjsx', './server/routers/**/*.cjsx', './app/*.cjsx'])
+  gulp.src(['./app/*.cjsx', './app/components/*.cjsx', './server/routers/**/*.cjsx'])
     .pipe(sourcemaps.init())
     .pipe(cjsx({bare: true}))
     .pipe(sourcemaps.write())
     .pipe(concat("react-bundle.js"))
     .pipe(gulp.dest('./build/assets'))
+    .pipe(addsrc('./server/react-common-head.js'))
+    .pipe(addsrc.append('./server/react-common-foot.js'))
+    .pipe(concat("react-bundle.js"))
+    .pipe(gulp.dest('./server'))
 
 gulp.task 'browser-sync', ['nodemon'], ->
   browserSync.init null,

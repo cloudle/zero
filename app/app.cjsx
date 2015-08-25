@@ -1,8 +1,12 @@
-RouteHandler = React.RouteHandler
+RouteHandler = ReactRouter.RouteHandler
 Link = ReactRouter.Link
 
 App = React.createClass
     render: ->
-        <Link to="about">About</Link>
-        <h1>this is App!</h1>
-        <RouteHandler/>
+        <div>
+            <Link to="about">Go to About</Link>
+            <Link to="users">Go to Users</Link>
+            <Link to="car">Go to Car</Link>
+            <Link to="recent-cars">Go to Cars</Link>
+            <RouteHandler />
+        </div>
