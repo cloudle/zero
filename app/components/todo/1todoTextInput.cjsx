@@ -3,7 +3,7 @@ TodoTextInput = React.createClass
     className: React.PropTypes.string
     id: React.PropTypes.string
     placeholder: React.PropTypes.string
-    onSave: React.PropTypes.func.isRequiredc
+    onSave: React.PropTypes.func.isRequired
     value: React.PropTypes.string
 
   getInitialState: ->
@@ -15,7 +15,7 @@ TodoTextInput = React.createClass
         id={@props.id}
         className={@props.className}
         placeholder={@props.placeholder}
-        onBlur={@_save}
+        onBlur={@_save}sss
         onChange={@_onChange}
         onKeyDown={@_onKeyDown}
         value={@state.value}

@@ -14,7 +14,7 @@ TodoItem = React.createClass
             <li className={classNames({'completed': todo.complete, 'editing': this.state.isEditing })} key={todo.id}>
                 <div className="view">
                     <input className="toggle" type="checkbox" checked={todo.complete} onChange={@_onToggleComplete} />
-                    <label onDoubleClick={@onDoubleClick}>{todo.text}</label>
+                    <label onDoubleClick={@_onDoubleClick}>{todo.text}</label>
                     <button className="destroy" onClick={@_onDestroyClick} >X</button>
                 </div>
                 {input}

@@ -8,7 +8,7 @@ app.todoActions =
 
   updateText: (id, text) ->
     app.Dispatcher.dispatch
-      actionType: TodoConstants.TODO_UPDATE_TEXT
+      actionType: ActionTypes.TODO_UPDATE_TEXT
       id: id
       text: text
 
