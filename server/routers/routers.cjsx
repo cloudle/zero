@@ -6,6 +6,7 @@ Redirect = ReactRouter.Redirect
 routes = (
     <Route handler={App} path="/">
         <DefaultRoute handler={Home} />
+        <Route name="todo" handler={TodoApp} />
         <Route name="about" handler={About} />
         <Route name="car" handler={Car}>
             <Route name="recent-cars" handler={CarList} />

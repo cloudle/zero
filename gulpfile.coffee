@@ -54,16 +54,20 @@ gulp.task 'style-bundle', ->
 gulp.task 'script-bundle', ->
   gulp.src('./app/**/*.coffee')
   .pipe(order([
-      '**/*super*.coffee'
+      'scripts/**/sys-*.coffee'
+      'scripts/core/**/*.coffee'
+      'scripts/stores/actions/**/*.coffee'
+      'scripts/stores/events/**/*.coffee'
+      'scripts/stores/**/*.coffee'
     ]))
   .pipe(sourcemaps.init())
-  .pipe(coffee({bare: true}))
+  .pipe(coffee())
   .pipe(concat("bundle.js"))
   .pipe(sourcemaps.write({sourceRoot: '/app'}))
   .pipe(gulp.dest('./build/assets'))
 
 gulp.task 'react-bundle', ->
-  gulp.src(['./app/*.cjsx', './app/components/*.cjsx', './server/routers/**/*.cjsx'])
+  gulp.src(['./app/*.cjsx', './app/components/**/*.cjsx', './server/routers/**/*.cjsx'])
     .pipe(sourcemaps.init())
     .pipe(cjsx({bare: true}))
     .pipe(sourcemaps.write())

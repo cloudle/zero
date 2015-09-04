@@ -1,7 +1,10 @@
 Link = ReactRouter.Link
 
 Home = React.createClass
+    getInitialState: ->
+        {}
+
     render: ->
         <div>
-            <h1>this is Home</h1>
+            <h1>this is Home {@state.appName}</h1>
         </div>
