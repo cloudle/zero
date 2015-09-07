@@ -67,7 +67,12 @@ gulp.task 'script-bundle', ->
   .pipe(gulp.dest('./build/assets'))
 
 gulp.task 'react-bundle', ->
-  gulp.src(['./app/*.cjsx', './app/components/**/*.cjsx', './server/routers/**/*.cjsx'])
+  gulp.src([
+      './app/*.cjsx'
+      './app/partials/**/*.cjsx'
+      './app/components/**/*.cjsx'
+      './server/routers/**/*.cjsx'
+    ])
     .pipe(sourcemaps.init())
     .pipe(cjsx({bare: true}))
     .pipe(sourcemaps.write())

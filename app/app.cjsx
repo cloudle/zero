@@ -6,10 +6,15 @@ App = React.createClass
         appName: 'Zero!'
     render: ->
         <div>
-            <Link to="todo">Todo</Link>
-            <Link to="about">Go to {@state.appName} About</Link>
-            <Link to="users">Go to Users</Link>
-            <Link to="car">Go to Car</Link>
-            <Link to="recent-cars">Go to Cars</Link>
-            <RouteHandler />
+            <Navigation />
+            <div id="container" className="dual-content">
+                <div className="left-side-pane"></div>
+                <div className="dual-content-wrapper">
+                    <div className="right-side-pane">
+                        <RouteHandler />
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
         </div>
