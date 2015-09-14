@@ -1,0 +1,16 @@
+{
+  "name": "zero",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cloudle/zero",
+  "authors": [
+    "ngocson.le <ngocon.le@officience.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

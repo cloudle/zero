@@ -1,0 +1,15 @@
+@import "variable"
+@import "mixins"
+
+.hide
+  display none
+
+.clearfix
+  &:before, &:after
+    content ""
+    display table
+  &:after
+    clear both
+
+.pointer-event-off
+  pointer-events none
