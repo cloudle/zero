@@ -20,7 +20,12 @@ var gulp = require('gulp'),
   browserSync = require('browser-sync').create();
 
 var paths = {
-  styles: ['./app/styles/main.styl'],
+  styles: [
+      './app/styles/main.styl',
+      './app/styles/framework/**/*.styl',
+      './app/styles/components/**/*.styl',
+      './app/styles/app/**/*.styl'
+  ],
   scripts: [
     './app/scripts/**/sys-*.coffee',
     './app/scripts/core/**/*.coffee',
@@ -40,9 +45,9 @@ gulp.task('style-bundle', function() {
   gulp.src(paths.styles)
       .pipe(sourcemaps.init())
       .pipe(stylus(stylus({use: [nib(), jeet(), autoprefixer()]})))
+      .pipe(concat("bundle.css"))
       .pipe(sourcemaps.write())
-      .pipe(rename('bundle.css'))
-      .pipe(gulp.dest('./build'))
+      .pipe(gulp.dest('./assets'))
 });
 
 gulp.task('script-bundle', function() {
@@ -51,7 +56,7 @@ gulp.task('script-bundle', function() {
       .pipe(coffee())
       .pipe(concat("bundle.js"))
       .pipe(sourcemaps.write({sourceRoot: '/app'}))
-      .pipe(gulp.dest('./build'))
+      .pipe(gulp.dest('./assets'))
 });
 
 gulp.task('react-bundle', function() {
@@ -60,7 +65,7 @@ gulp.task('react-bundle', function() {
       .pipe(cjsx({bare: true}))
       .pipe(sourcemaps.write())
       .pipe(concat("react-bundle.js"))
-      .pipe(gulp.dest('./build'))
+      .pipe(gulp.dest('./assets'))
       .pipe(addsrc('./server/react-common-head.js'))
       .pipe(addsrc.append('./server/react-common-foot.js'))
       .pipe(concat("react-bundle.js"))
@@ -71,7 +76,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
   browserSync.init(null, {
     port: 2015,
     proxy: "http://localhost:7000",
-    files: ["./build/**/*.*", "./server/**/*.jade"],
+    files: ["./assets/**/*.*", "./server/**/*.jade"],
     open: false
   });
 

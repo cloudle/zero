@@ -21,4 +21,4 @@ routes = (
 )
 
 ReactRouter.run routes, ReactRouter.HistoryLocation, (Handler, state) ->
-    React.render(<Handler/>, document.getElementById('content'))
+    React.render(<Handler/>, document.getElementById('application'))

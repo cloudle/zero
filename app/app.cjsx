@@ -4,17 +4,28 @@ Link = ReactRouter.Link
 App = React.createClass
     getInitialState: ->
         appName: 'Zero!'
+        applicationWidth: 0
+        applicationHeight: 0
+
+    componentDidMount: ->
+        scope = @
+        applicationSizeManager(scope)
+        $(window).resize -> applicationSizeManager(scope)
+
+    componentWillUnmount: -> $(window).off("resize", applicationSizeManager(@));
+
     render: ->
-        <div>
+        <div id="container" className="dual-layout" style={height: @state.applicationHeight+'px'}>
             <Navigation />
-            <div id="container" className="dual-content">
-                <div className="left-side-pane"></div>
-                <div className="dual-content-wrapper">
-                    <div className="right-side-pane">
-                        <RouteHandler />
-                    </div>
+            <div className="detail-wrapper">
+                <div className="dual-detail">
+                    <RouteHandler />
                 </div>
             </div>
-
-            <Footer />
+            <KernelAddon />
         </div>
+
+applicationSizeManager = (scope) ->
+    scope.setState
+        applicationHeight: $(window).outerHeight()
+        applicationWidth: $(window).outerWidth()

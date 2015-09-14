@@ -1,0 +1,22 @@
+@import "../variable"; @import "../mixins"
+
+nav .branding
+  width root-addon-size
+  background-color root-addon-bg-dark
+  color #fff
+  height 50px
+
+  .logo-img
+    border-radius 50%
+    width 30px; height @width
+    absolute top 10px left 15px
+    background-size cover
+  .logo-text
+    float left
+    padding-left 55px
+    font-size 30px
+    font-weight 800; font-style italic
+    .sub-text
+      font-weight 400
+      font-size 12px
+      margin-left 2px
