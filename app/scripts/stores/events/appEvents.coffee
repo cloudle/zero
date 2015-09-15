@@ -1,2 +1,2 @@
-app.events =
+App.events =
   Change: 'change'

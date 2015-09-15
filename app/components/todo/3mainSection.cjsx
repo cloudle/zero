@@ -1,4 +1,4 @@
-TodoMainSection = React.createClass
+Templates.TodoMainSection = React.createClass
     propTypes:
         allTodos: React.PropTypes.object.isRequired
         areAllComplete: React.PropTypes.bool.isRequired
@@ -10,7 +10,7 @@ TodoMainSection = React.createClass
         todos = []
 
         for key, obj of allTodos
-            todos.push(<TodoItem key={key} todo={obj} />)
+            todos.push(<Templates.TodoItem key={key} todo={obj} />)
 
         return (
             <h1>Main section</h1>
@@ -26,4 +26,4 @@ TodoMainSection = React.createClass
             </section>
         )
 
-    _onToggleCompleteAll: -> app.todoActions.toggleCompleteAll()
+    _onToggleCompleteAll: -> App.todoActions.toggleCompleteAll()

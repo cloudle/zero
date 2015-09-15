@@ -1,4 +1,6 @@
-Navigation = React.createClass
+Link = ReactRouter.Link
+
+Templates.Navigation = React.createClass
     render: ->
         <nav className="fixed-top">
             <div className="branding">

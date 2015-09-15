@@ -2,6 +2,7 @@ var gulp = require('gulp'),
   order = require('gulp-order'),
   rename = require('gulp-rename'),
   merge = require('merge-stream'),
+  gulpIf = require('gulp-if'),
   concat = require('gulp-concat'),
   addsrc = require('gulp-add-src'),
   stylus = require('gulp-stylus'),
@@ -14,6 +15,7 @@ var gulp = require('gulp'),
   jade = require('gulp-jade'),
   coffee = require('gulp-coffee'),
   cjsx = require('gulp-cjsx'),
+  react = require('gulp-react'),
   sourcemaps = require('gulp-sourcemaps'),
 
   nodemon = require('gulp-nodemon'),
@@ -34,10 +36,10 @@ var paths = {
     './app/scripts/stores/**/*.coffee'
   ],
   reactTemplates: [
-    './app/*.cjsx',
-    './app/partials/**/*.cjsx',
-    './app/components/**/*.cjsx',
-    './server/routers/**/*.cjsx'
+    './app/*.*jsx',
+    './app/partials/**/*.*jsx',
+    './app/components/**/*.*jsx',
+    './server/routers/**/*.*jsx'
   ]
 };
 
@@ -62,7 +64,7 @@ gulp.task('script-bundle', function() {
 gulp.task('react-bundle', function() {
   gulp.src(paths.reactTemplates)
       .pipe(sourcemaps.init())
-      .pipe(cjsx({bare: true}))
+      .pipe(gulpIf(/[.]cjsx$/, cjsx(), react()))
       .pipe(sourcemaps.write())
       .pipe(concat("react-bundle.js"))
       .pipe(gulp.dest('./assets'))

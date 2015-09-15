@@ -1,17 +1,17 @@
 getTodoState = ->
-    allTodos: app.TodoStore.getAll()
-    areAllComplete: app.TodoStore.areAllComplete()
+    allTodos: App.TodoStore.getAll()
+    areAllComplete: App.TodoStore.areAllComplete()
 
-TodoApp = React.createClass
+Templates.TodoApp = React.createClass
     getInitialState: -> getTodoState()
-    componentDidMount: -> app.TodoStore.startTrackingChange(@_onChange)
-    componentWillUnmount: -> app.TodoStore.stopTrackingChange(@_onChange)
+    componentDidMount: -> App.TodoStore.startTrackingChange(@_onChange)
+    componentWillUnmount: -> App.TodoStore.stopTrackingChange(@_onChange)
 
     render: ->
         return (
             <div>
                 <h1>Wei Shen Me?</h1>
-                <TodoMainSection allTodos={@state.allTodos} areAllComplete={@state.areAllComplete} />
+                <Templates.TodoMainSection allTodos={@state.allTodos} areAllComplete={@state.areAllComplete} />
             </div>
         )
 

@@ -1,7 +1,9 @@
 RouteHandler = ReactRouter.RouteHandler
 Link = ReactRouter.Link
+Navigation = Templates.Navigation
+KernelAddon = Templates.KernelAddon
 
-App = React.createClass
+Templates.App = React.createClass
     getInitialState: ->
         appName: 'Zero!'
         applicationWidth: 0

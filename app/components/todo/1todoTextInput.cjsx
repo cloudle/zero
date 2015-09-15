@@ -1,4 +1,4 @@
-TodoTextInput = React.createClass
+Templates.TodoTextInput = React.createClass
   propTypes:
     className: React.PropTypes.string
     id: React.PropTypes.string

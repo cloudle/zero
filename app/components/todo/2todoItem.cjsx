@@ -1,4 +1,4 @@
-TodoItem = React.createClass
+Templates.TodoItem = React.createClass
     propTypes:
         todo: React.PropTypes.object.isRequired
 
@@ -8,7 +8,7 @@ TodoItem = React.createClass
     render: ->
         todo = @props.todo
         if @state.isEditing
-            input = <TodoTextInput className="edit" onSave={@_onSave} value={todo.text} />
+            input = <Templates.TodoTextInput className="edit" onSave={@_onSave} value={todo.text} />
 
         return (
             <li className={classNames({'completed': todo.complete, 'editing': this.state.isEditing })} key={todo.id}>
@@ -22,10 +22,10 @@ TodoItem = React.createClass
         )
 
     _onToggleComplete: ->
-        app.todoActions.toggleComplete(@props.todo)
+        App.todoActions.toggleComplete(@props.todo)
     _onDoubleClick: -> @setState({isEditing: true})
     _onSave: (text) ->
-        app.todoActions.updateText(@props.todo.id, text)
+        App.todoActions.updateText(@props.todo.id, text)
         @setState({isEditing: false})
     _onDestroyClick: ->
-        app.todoActions.destroy(@props.todo.id)
+        App.todoActions.destroy(@props.todo.id)

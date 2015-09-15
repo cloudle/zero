@@ -14,7 +14,7 @@ _todos =
     complete: false
     text: "House"
 
-ActionTypes = app.Constant.ActionTypes
+ActionTypes = App.Constant.ActionTypes
 
 create = (text) ->
   id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36)
@@ -25,36 +25,36 @@ updateAll = (updates) -> helpers.merges(todo, updates) for key, todo of _todos; 
 destroy = (id) -> delete _todos[id]
 clearCompleted = -> delete _todos[id] for id, todo of _todos when todo.complete
 
-app.TodoStore = helpers.merges new EventEmitter(),
+App.TodoStore = helpers.merges new EventEmitter(),
   areAllComplete: -> (return false unless todo.complete) for id, todo of _todos; return true
   getAll: -> _todos
-  emitChange: -> @emit app.events.Change
-  startTrackingChange: (callback) -> @on app.events.Change, callback
-  stopTrackingChange: (callback) -> @removeListener app.events.Change, callback
+  emitChange: -> @emit App.events.Change
+  startTrackingChange: (callback) -> @on App.events.Change, callback
+  stopTrackingChange: (callback) -> @removeListener App.events.Change, callback
 
-app.Dispatcher.register (action) ->
+App.Dispatcher.register (action) ->
   if action.actionType is ActionTypes.TODO_CREATE
     if action.text.trim() isnt ''
       create(text)
-      app.TodoStore.emitChange()
+      App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_TOGGLE_COMPLETE_ALL
-    if app.TodoStore.areAllComplete()
+    if App.TodoStore.areAllComplete()
       updateAll {complete: false}
     else
       updateAll {complete: true}
-    app.TodoStore.emitChange()
+    App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_UNDO_COMPLETE
     update(action.id, {complete: false})
-    app.TodoStore.emitChange()
+    App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_COMPLETE
     update(action.id, {complete: true})
-    app.TodoStore.emitChange()
+    App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_UPDATE_TEXT
     text = action.text.trim()
     if text isnt ''
       update(action.id, {text: text})
-      app.TodoStore.emitChange()
+      App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_DESTROY
-    destroy(action.id); app.TodoStore.emitChange()
+    destroy(action.id); App.TodoStore.emitChange()
   else if action.actionType is ActionTypes.TODO_DESTROY_COMPLETED
-    clearCompleted(); app.TodoStore.emitChange()
+    clearCompleted(); App.TodoStore.emitChange()

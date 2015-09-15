@@ -1,8 +1,7 @@
-ActionTypes = app.Constant.ActionTypes
+ActionTypes = App.Constant.ActionTypes
 
-app.Actions =
+App.Actions =
   changeAppName: (newAppName) ->
-    app.Dispatcher.dispatch
+    App.Dispatcher.dispatch
       type: ActionTypes.CHANGE_APP_NAME
       nameName: newAppName
-
