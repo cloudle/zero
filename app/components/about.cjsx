@@ -1,3 +1,3 @@
-Templates.About = React.createClass
+Components.About = React.createClass
     render: ->
         <h1>this is About</h1>

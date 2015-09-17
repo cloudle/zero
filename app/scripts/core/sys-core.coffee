@@ -1,4 +1,4 @@
-@App = {}; @Wings = {}; @Templates = {}
+@App = {}; @Wings = {}; @Components = {}
 
 App.Dispatcher = new Flux.Dispatcher();
 

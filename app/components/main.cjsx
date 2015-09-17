@@ -1,4 +1,4 @@
-Templates.Car = React.createClass
+Components.Car = React.createClass
   getInitialState: ->
     timeRemaining: 10
 
@@ -21,7 +21,7 @@ Templates.Car = React.createClass
   render: ->
     <li onClick={@resetCoolDown}>This is the car {@props.name} {@state.timeRemaining}</li>
 
-Templates.CarList = React.createClass
+Components.CarList = React.createClass
   render: ->
     return (
       <h1>cars</h1>

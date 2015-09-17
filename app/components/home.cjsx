@@ -1,6 +1,4 @@
-Link = ReactRouter.Link
-
-Templates.Home = React.createClass
+Components.Home = React.createClass
     getInitialState: ->
         {}
 

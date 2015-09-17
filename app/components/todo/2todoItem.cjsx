@@ -1,4 +1,4 @@
-Templates.TodoItem = React.createClass
+Components.TodoItem = React.createClass
     propTypes:
         todo: React.PropTypes.object.isRequired
 
@@ -8,7 +8,7 @@ Templates.TodoItem = React.createClass
     render: ->
         todo = @props.todo
         if @state.isEditing
-            input = <Templates.TodoTextInput className="edit" onSave={@_onSave} value={todo.text} />
+            input = <Components.TodoTextInput className="edit" onSave={@_onSave} value={todo.text} />
 
         return (
             <li className={classNames({'completed': todo.complete, 'editing': this.state.isEditing })} key={todo.id}>

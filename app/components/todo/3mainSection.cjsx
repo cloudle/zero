@@ -1,4 +1,4 @@
-Templates.TodoMainSection = React.createClass
+Components.TodoMainSection = React.createClass
     propTypes:
         allTodos: React.PropTypes.object.isRequired
         areAllComplete: React.PropTypes.bool.isRequired
@@ -10,7 +10,7 @@ Templates.TodoMainSection = React.createClass
         todos = []
 
         for key, obj of allTodos
-            todos.push(<Templates.TodoItem key={key} todo={obj} />)
+            todos.push(<Components.TodoItem key={key} todo={obj} />)
 
         return (
             <h1>Main section</h1>

@@ -12,5 +12,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "flux": "~2.1.1",
+    "jquery": "~2.1.4",
+    "react": "~0.13.3"
+  }
 }

@@ -1,3 +1,3 @@
-Templates.NotFound = React.createClass
+Components.NotFound = React.createClass
     render: ->
         <h1>Page not found!!</h1>

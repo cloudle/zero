@@ -1,9 +1,9 @@
 RouteHandler = ReactRouter.RouteHandler
 Link = ReactRouter.Link
-Navigation = Templates.Navigation
-KernelAddon = Templates.KernelAddon
+Navigation = Components.Navigation
+KernelAddon = Components.KernelAddon
 
-Templates.App = React.createClass
+Components.App = React.createClass
     getInitialState: ->
         appName: 'Zero!'
         applicationWidth: 0
@@ -18,13 +18,13 @@ Templates.App = React.createClass
 
     render: ->
         <div id="container" className="dual-layout" style={height: @state.applicationHeight+'px'}>
-            <Navigation />
+            <Components.Navigation />
             <div className="detail-wrapper">
                 <div className="dual-detail">
                     <RouteHandler />
                 </div>
             </div>
-            <KernelAddon />
+            <Components.KernelAddon />
         </div>
 
 applicationSizeManager = (scope) ->
